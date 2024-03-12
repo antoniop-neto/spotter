@@ -1,0 +1,6 @@
+<h1>My Bookings</h1>
+<ul>
+  <% @bookings.each do |booking| %>
+    <li><%= booking.listing_id %></li>
+  <% end %>
+</ul>
