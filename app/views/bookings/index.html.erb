@@ -2,7 +2,12 @@
   <h1>My Bookings</h1>
   <ul>
     <% @bookings.each do |booking| %>
-      <li><%= booking.listing_id%></li>
+      <li>
+        Listing ID: <%= booking.listing_id %><br>
+        Start Date: <%= booking.start_date %><br>
+        End Date: <%= booking.end_date %><br>
+        User ID: <%= booking.user_id %>
+      </li>
     <% end %>
   </ul>
 </div>

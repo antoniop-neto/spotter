@@ -1,12 +1,14 @@
+
+
 <div class="container">
-<%= link_to "Home Page", root_path('/root') %>
-  <h1>Listings</h1>
+  <%= link_to "Home Page", root_path, class: 'home-link' %>
+  <h1 class="listings-title">Listings</h1>
 
   <% @listings.each do |listing| %>
-  <ul>
-    <li><%= link_to listing.name, listing_path(listing) %></li>
-    <li><%= listing.location %></li>
-    <li><%= listing.price %></li>
-  </ul>
+    <div class="listing">
+      <h2 class="listing-name"><%= link_to listing.name, listing_path(listing) %></h2>
+      <p class="listing-detail"><strong>Location:</strong> <%= listing.location %></p>
+      <p class="listing-detail"><strong>Price:</strong> <%= listing.price %></p>
+    </div>
   <% end %>
 </div>
