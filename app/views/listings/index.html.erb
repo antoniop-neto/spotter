@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Listings</h1>
+
+  <% @listings.each do |listing| %>
+  <ul>
+    <li><%= link_to listing.name, listing_path(listing) %></li>
+    <li><%= listing.location %></li>
+    <li><%= listing.price %></li>
+  </ul>
+  <% end %>
+</div>

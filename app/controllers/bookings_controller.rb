@@ -1,5 +1,10 @@
 class BookingsController < ApplicationController
+
   before_action
+  def index
+    @bookings = Booking.all
+  end
+  
   def new
     @booking = Booking.new
   end
@@ -14,15 +19,21 @@ class BookingsController < ApplicationController
       # this is when you fail to book, you will come back to new booking page
     end
   end
-
+  
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path, status: :see_other
+    
   private
 
-  def set_offer
-    @offer = Offer.find(params[:offer_id])
+  def set_listing
+    @listing = Listing.find(params[:offer_id])
   end
 
   def booking_params
     params.require(:booking).permit(:number_of_guests, :booking_date)
     # check the booking to insure information is correct
   end
+
 end
