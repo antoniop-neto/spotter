@@ -1,12 +1,16 @@
 <div class="container">
-<%= link_to "Home Page", root_path('/root') %>
   <h1>Listings</h1>
-
-  <% @listings.each do |listing| %>
-  <ul>
-    <li><%= link_to listing.name, listing_path(listing) %></li>
-    <li><%= listing.location %></li>
-    <li><%= listing.price %></li>
-  </ul>
-  <% end %>
+  <br>
+    <% @listings.each do |listing| %>
+      <strong><%= listing.name %></strong>
+        <ul>
+          <li><%= "Location: #{listing.location}" %></li>
+          <li><%= "Wifi: #{listing.wifi}" %></li>
+          <li><%= "Workspace: #{listing.workspace}" %></li>
+          <li><%= "Price: #{listing.price}" %></li>
+          <li><%= "Host: #{listing.user.first_name} #{listing.user.last_name}" %></li>
+        </ul>
+      <br>
+    <% end %>
+  <%= link_to "Back to Homepage", root_path %>
 </div>
