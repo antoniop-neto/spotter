@@ -1,8 +1,17 @@
 <div class="container">
   <h1>My Bookings</h1>
-  <ul>
+  <h3><%= "Welcome #{current_user.first_name}!" %></h3>
+  <br>
     <% @bookings.each do |booking| %>
-      <li><%= booking.listing_id%></li>
+      <% if (booking.user.first_name == @user.first_name) && (booking.user.last_name == @user.last_name) %>
+        <strong><%= booking.listing.name %></strong>
+          <ul>
+            <li><%= "Start Date: #{booking.start_date}" %></li>
+            <li><%= "End Date: #{booking.end_date}" %></li>
+            <li><%= "Host: #{booking.listing.user.first_name} #{booking.listing.user.last_name} " %></li>
+          </ul>
+        <br>
+      <% end %>
     <% end %>
-  </ul>
+  <%= link_to "Back to Homepage", root_path %>
 </div>
