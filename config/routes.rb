@@ -9,13 +9,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-<<<<<<< Updated upstream
-=======
 
   # routes for Bookings
   # I want to view my bookings
   get "bookings", to: "bookings#index", as: :bookings
   # I want to cancel my bookings
   delete "bookings/:id", to: "bookings#destroy"
->>>>>>> Stashed changes
 end
