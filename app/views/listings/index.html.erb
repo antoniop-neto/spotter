@@ -15,6 +15,7 @@
           <li><%= "Workspace: #{listing.workspace}" %></li>
           <li><%= "Price: #{listing.price}" %></li>
           <li><%= "Host: #{listing.user.first_name} #{listing.user.last_name}" %></li>
+          <%= link_to "Book Now", new_booking_path(listing_id: listing.id), class: "book-button" %>
         </ul>
       <br>
     <% end %>
