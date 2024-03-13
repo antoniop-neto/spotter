@@ -1,8 +1,14 @@
 <div class="container">
   <h1>All Available Listings</h1>
   <br>
+
     <% @listings.each do |listing| %>
       <strong><%= listing.name %></strong>
+        <div class="container">
+        <% if listing.photo.attached? %>
+          <%= cl_image_tag listing.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+        </div>
         <ul>
           <li><%= "Location: #{listing.location}" %></li>
           <li><%= "Wifi: #{listing.wifi}" %></li>

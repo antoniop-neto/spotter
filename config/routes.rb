@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  
   get 'listings', to: 'listings#index', as: :listings
   # I want to view and manage my listings
   get "listings/manage", to: "listings#manage", as: :manage_listings
+  get 'listings/new', to: 'listings#new', as: :new
+  post 'listings', to: 'listings#create'
   get 'listings/:id', to: 'listings#show', as: :listing
   # I want to cancel my listings
   delete "listings/:id", to: "listings#destroy", as: :delete_listing
