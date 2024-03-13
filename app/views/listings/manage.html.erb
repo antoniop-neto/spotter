@@ -1,21 +1,15 @@
 <div class="container">
-  <h1>All Available Listings</h1>
+  <h1>Manage My Listings</h1>
   <br>
-
     <% @listings.each do |listing| %>
       <strong><%= listing.name %></strong>
-        <div class="container">
-        <% if listing.photo.attached? %>
-          <%= cl_image_tag listing.photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-        </div>
         <ul>
           <li><%= "Location: #{listing.location}" %></li>
           <li><%= "Wifi: #{listing.wifi}" %></li>
           <li><%= "Workspace: #{listing.workspace}" %></li>
           <li><%= "Price: #{listing.price}" %></li>
           <li><%= "Host: #{listing.user.first_name} #{listing.user.last_name}" %></li>
-          <%= link_to "Book Now", new_booking_path(listing_id: listing.id), class: "book-button" %>
+          <li><%= link_to "Delete Listing", delete_listing_path(listing), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
         </ul>
       <br>
     <% end %>
