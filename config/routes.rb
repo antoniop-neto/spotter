@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   get "bookings", to: "bookings#index", as: :bookings
   # I want to cancel my bookings
   delete "bookings/:id", to: "bookings#destroy"
+
+  get 'bookings/new', to: 'bookings#new', as: :new_booking
+  post 'bookings', to: 'bookings#create'
 end
