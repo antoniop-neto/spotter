@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>All Available Listings</h1>
+  <h1>Manage My Listings</h1>
   <br>
     <% @listings.each do |listing| %>
       <strong><%= listing.name %></strong>
@@ -9,6 +9,7 @@
           <li><%= "Workspace: #{listing.workspace}" %></li>
           <li><%= "Price: #{listing.price}" %></li>
           <li><%= "Host: #{listing.user.first_name} #{listing.user.last_name}" %></li>
+          <li><%= link_to "Delete Listing", delete_listing_path(listing), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
         </ul>
       <br>
     <% end %>
