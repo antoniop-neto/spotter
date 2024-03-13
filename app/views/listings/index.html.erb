@@ -1,5 +1,6 @@
 <div class="container">
-  <%= link_to "Back to Homepage", root_path %>
+  <%= link_to "Back to Homepage", root_path, class: "btn btn-info" %>
+  <br>
   <h1>Available Workation Listings</h1>
   <br>
 
@@ -7,16 +8,13 @@
       <strong><%= listing.name %></strong>
         <div class="container">
         <% if listing.photo.attached? %>
-          <%= cl_image_tag listing.photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag listing.photo.key, height: 150, width: 200, crop: :fill %>
         <% end %>
         </div>
         <ul>
           <li><%= "Location: #{listing.location}" %></li>
-          <li><%= "Wifi: #{listing.wifi}" %></li>
-          <li><%= "Workspace: #{listing.workspace}" %></li>
           <li><%= "Price: #{listing.price}" %></li>
-          <li><%= "Host: #{listing.user.first_name} #{listing.user.last_name}" %></li>
-          <%= link_to "Book Now", new_booking_path(listing.id), class: "book-button" %>
+          <%= link_to "Learn More", listing_path(listing), class: "btn btn-primary" %>
         </ul>
       <br>
     <% end %>
