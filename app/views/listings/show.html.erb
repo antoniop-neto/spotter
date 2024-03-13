@@ -7,8 +7,8 @@
     <% end %>
     <ul>
       <li><%= "Location: #{@listing.location}" %></li>
-      <li><%= "Wifi: #{@listing.wifi}" %></li>
-      <li><%= "Workspace: #{@listing.workspace}" %></li>
+      <li><%= "Wifi: #{@listing.wifi.to_s}" %></li>
+      <li><%= "Workspace: #{@listing.workspace.to_s}" %></li>
       <li><%= "Price: #{@listing.price}" %></li>
       <li><%= "Host: #{@listing.user.first_name} #{@listing.user.last_name}" %></li>
       <%= link_to "Book Now", new_booking_path(@listing.id), class: "btn btn-primary" %>
