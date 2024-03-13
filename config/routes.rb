@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  
+
   get 'listings', to: 'listings#index', as: :listings
   # I want to view and manage my listings
   get "listings/manage", to: "listings#manage", as: :manage_listings
-  get 'listings/new', to: 'listings#new', as: :new
+  get 'listings/new', to: 'listings#new', as: :new_listing
   post 'listings', to: 'listings#create'
   get 'listings/:id', to: 'listings#show', as: :listing
   # I want to cancel my listings
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   # I want to cancel my bookings
   delete "bookings/:id", to: "bookings#destroy", as: :delete_booking
 
-  get 'bookings/new', to: 'bookings#new', as: :new_booking
-  post 'bookings', to: 'bookings#create'
+  # I want to create bookings for a specific listing
+  get 'listings/:listing_id/bookings/new', to: 'bookings#new', as: :new_booking
+  post 'listings/:listing_id/bookings', to: 'bookings#create', as: :listing_bookings
 end

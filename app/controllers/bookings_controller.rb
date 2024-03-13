@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  before_action
+  before_action :set_listing, only: [:new, :create]
+
   def index
     @bookings = Booking.all
     @user = current_user
@@ -10,10 +11,11 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = @offer.bookings.build(booking_params)
+    @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.listing = @listing
     if @booking.save
-      redirect_to @booking, notice: 'booking is successful'
+      redirect_to bookings_path, notice: 'booking is successful'
     else
       render :new, status: :unprocessable_entity
       # this is when you fail to book, you will come back to new booking page
@@ -29,7 +31,7 @@ class BookingsController < ApplicationController
   private
 
   def set_listing
-    @listing = Listing.find(params[:offer_id])
+    @listing = Listing.find(params[:listing_id])
   end
 
   def booking_params
