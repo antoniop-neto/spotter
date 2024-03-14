@@ -1,8 +1,9 @@
 <div class="container mt-5">
+  <%= link_to "Back to Homepage", root_path, class: "btn btn-info" %>
   <h1>Enter Booking Details</h1>
   <%= simple_form_for([@listing, @booking]) do |f| %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
-    <%= f.submit class: "btn btn-secondary" %>
+    <%= f.submit class: "btn btn-success" %>
   <% end %>
 </div>
