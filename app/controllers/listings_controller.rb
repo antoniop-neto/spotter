@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
 
   def index
     if params[:query].present?
-      @listings = Listing.search_by_name_and_location(params[:query]) 
+      @listings = Listing.search_by_name_and_location(params[:query])
     else
       @listings = Listing.all
     end
@@ -13,6 +13,7 @@ class ListingsController < ApplicationController
         lng: listing.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: { listing: listing })
       }
+    end
   end
 
   def show
