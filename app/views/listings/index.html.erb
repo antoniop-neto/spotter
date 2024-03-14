@@ -23,24 +23,21 @@
   </div>
 
 
-
-    <% @listings.each do |listing| %>
-      <strong><%= listing.name %></strong>
-        <div class="container">
+<div class="container-card">
+  <% @listings.each do |listing| %>
+      <div class="card-trip">
         <% if listing.photo.attached? %>
           <%= cl_image_tag listing.photo.key, height: 150, width: 200, crop: :fill %>
         <% end %>
-        </div>
-        <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-product-infos">
-            <ul>
-              <li><%= "Location: #{listing.location}" %></li>
-              <li><%= "Price: #{listing.price}" %></li>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= listing.name %></h2>
+            <p><%= listing.location %></p>
             <%= link_to "Learn More", listing_path(listing), class: "btn btn-primary" %>
-            </ul>
-            </div>
           </div>
-      <br>
-    <% end %>
+          <h2 class="card-trip-pricing"><%= listing.price %></h2>
+        </div>
+      </div>
+    <br>
+  <% end %>
 </div>
