@@ -4,6 +4,8 @@ class Listing < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
   validates :name, :location, :price, presence: true
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
   include PgSearch::Model
   pg_search_scope :search_by_name_and_location,

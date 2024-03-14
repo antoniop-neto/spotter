@@ -1,16 +1,29 @@
 class ListingsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
 
   def index
     if params[:query].present?
-      @listings = Listing.search_by_name_and_location(params[:query])
+      @listings = Listing.search_by_name_and_location(params[:query]) 
     else
       @listings = Listing.all
     end
+    @markers = Listing.all.geocoded.map do |listing|
+      {
+        lat: listing.latitude,
+        lng: listing.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { listing: listing })
+      }
   end
 
   def show
     @listing = Listing.find(params[:id])
+    @markers = [
+      {
+        lat: @listing.latitude,
+        lng: @listing.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { listing: @listing })
+      }
+    ]
   end
 
   def manage
@@ -25,12 +38,21 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user = current_user
-    if @listing.save
-      redirect_to listings_path(@listings)
-    else
-      render :new, status: :unprocessable_entity
-      # this is when you fail to book, you will come back to new booking page
+    respond_to do |form|
+      if @listing.save
+        form.html { redirect_to listing_url(@listing), notice: "Listing was successfully created." }
+        form.json { render :show, status: :created, location: @listing }
+      else
+        form.html { render :new, status: :unprocessable_entity }
+        form.json { render json: @listing.errors, status: :unprocessable_entity }
+      end
     end
+    # if @listing.save
+    #   redirect_to listings_path(@listings)
+    # else
+    #   render :new, status: :unprocessable_entity
+    #   # this is when you fail to book, you will come back to new booking page
+    # end
   end
 
   def destroy
@@ -44,5 +66,4 @@ class ListingsController < ApplicationController
   def listing_params
     params.require(:listing).permit(:name, :location, :price, :photo, :user_id)
   end
-
 end
