@@ -1,9 +1,9 @@
 .card-trip {
-  width: 20vw;
+  width: 22%;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 4px;
+  border-radius: px;
   margin: 8px;
 }
 
@@ -36,6 +36,7 @@
 
 .container-card {
   display: flex;
-  width: 100vw;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content:center;
 }
