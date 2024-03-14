@@ -11,11 +11,16 @@
           <%= cl_image_tag listing.photo.key, height: 150, width: 200, crop: :fill %>
         <% end %>
         </div>
-        <ul>
-          <li><%= "Location: #{listing.location}" %></li>
-          <li><%= "Price: #{listing.price}" %></li>
-          <%= link_to "Learn More", listing_path(listing), class: "btn btn-primary" %>
-        </ul>
+        <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-infos">
+            <ul>
+              <li><%= "Location: #{listing.location}" %></li>
+              <li><%= "Price: #{listing.price}" %></li>
+            <%= link_to "Learn More", listing_path(listing), class: "btn btn-primary" %>
+            </ul>
+            </div>
+          </div>
       <br>
     <% end %>
 </div>

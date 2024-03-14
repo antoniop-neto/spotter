@@ -1,17 +1,21 @@
 <div class="container mt-5">
   <%= link_to "Back to Listings", listings_path(@listings), class: "btn btn-info" %>
   <h2><%= @listing.name %></h2>
-  <div class="container mt-5">
+  <div class="container mt-5 card-trip">
     <% if  @listing.photo.attached? %>
       <%= cl_image_tag @listing.photo.key, height: 200, width: 300, crop: :fill %>
     <% end %>
-    <ul>
-      <li><%= "Location: #{@listing.location}" %></li>
-      <li><%= "Wifi: #{@listing.wifi.to_s}" %></li>
-      <li><%= "Workspace: #{@listing.workspace.to_s}" %></li>
-      <li><%= "Price: #{@listing.price}" %></li>
-      <li><%= "Host: #{@listing.user.first_name} #{@listing.user.last_name}" %></li>
-      <%= link_to "Book Now", new_booking_path(@listing.id), class: "btn btn-primary" %>
-    </ul>
+    <div class="card-trip-infos">
+      <h2>Title here</h2>
+      <p>Short description here!</p>
+        <ul>
+          <li><%= "Location: #{@listing.location}" %></li>
+          <li><%= "Wifi: #{@listing.wifi.to_s}" %></li>
+          <li><%= "Workspace: #{@listing.workspace.to_s}" %></li>
+          <li><%= "Price: #{@listing.price}" %></li>
+          <li><%= "Host: #{@listing.user.first_name} #{@listing.user.last_name}" %></li>
+          <%= link_to "Book Now", new_booking_path(@listing.id), class: "btn btn-primary" %>
+         </ul>
+    </div>
   </div>
 </div>
