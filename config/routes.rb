@@ -30,4 +30,8 @@ Rails.application.routes.draw do
   # I want to create bookings for a specific listing
   get 'listings/:listing_id/bookings/new', to: 'bookings#new', as: :new_booking
   post 'listings/:listing_id/bookings', to: 'bookings#create', as: :listing_bookings
+
+  # I want to create review for a specific listing
+  get 'listings/:listing_id/reviews/new', to: 'reviews#new', as: :new_review
+  post 'listings/:listing_id/reviews', to: 'reviews#create', as: :listing_reviews
 end

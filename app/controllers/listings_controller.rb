@@ -2,7 +2,11 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @listings = Listing.all
+    if params[:query].present?
+      @listings = Listing.search_by_name_and_location(params[:query])
+    else
+      @listings = Listing.all
+    end
   end
 
   def show
@@ -13,7 +17,7 @@ class ListingsController < ApplicationController
     @user = current_user
     @listings = current_user.listings
   end
-  
+
   def new
     @listing = Listing.new
   end
@@ -34,11 +38,11 @@ class ListingsController < ApplicationController
     @listing.destroy
     redirect_to listings_path, status: :see_other
   end
-  
+
   private
 
   def listing_params
     params.require(:listing).permit(:name, :location, :price, :photo, :user_id)
   end
-  
+
 end

@@ -6,6 +6,7 @@
       <%= cl_image_tag @listing.photo.key, height: 200, width: 300, crop: :fill %>
     <% end %>
     <ul>
+      <li><%= "Average Rating: #{@listing.average_rating}" %></li>
       <li><%= "Location: #{@listing.location}" %></li>
       <li><%= "Wifi: #{@listing.wifi.to_s}" %></li>
       <li><%= "Workspace: #{@listing.workspace.to_s}" %></li>
@@ -13,5 +14,20 @@
       <li><%= "Host: #{@listing.user.first_name} #{@listing.user.last_name}" %></li>
       <%= link_to "Book Now", new_booking_path(@listing.id), class: "btn btn-primary" %>
     </ul>
+  </div>
+  <%# Reviews Section %>
+  <div class="reviews mt-5">
+    <h3>Reviews</h3>
+    <% if @listing.reviews.any? %>
+      <% @listing.reviews.each do |review| %>
+        <div>
+          <strong>Rating:</strong> <%= review.rating %><br>
+          <strong>Comment:</strong> <%= review.comment %>
+        </div>
+      <br>
+      <% end %>
+    <% else %>
+      <p>No reviews yet</p>
+    <% end %>
   </div>
 </div>
