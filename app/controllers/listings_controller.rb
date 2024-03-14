@@ -2,14 +2,17 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, except: :index
 
   def index
-    @listings = Listing.all
-    @markers = @listings.geocoded.map do |listing|
+    if params[:query].present?
+      @listings = Listing.search_by_name_and_location(params[:query]) 
+    else
+      @listings = Listing.all
+    end
+    @markers = Listing.all.geocoded.map do |listing|
       {
         lat: listing.latitude,
         lng: listing.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: { listing: listing })
       }
-    end
   end
 
   def show
