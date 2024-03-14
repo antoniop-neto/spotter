@@ -1,10 +1,13 @@
 <div class="container mt-5">
+  <%= link_to "Back to Homepage", root_path, class: "btn btn-info" %>
   <h1>Add a New Listing</h1>
   <%= simple_form_for(@listing) do |f| %>
     <%= f.input :name %>
     <%= f.input :location %>
     <%= f.input :price %>
+    <%= f.input :wifi %>
+    <%= f.input :workspace %>
     <%= f.input :photo, as: :file %>
-    <%= f.submit class: "btn btn-secondary" %>
+    <%= f.submit class: "btn btn-success" %>
   <% end %>
 </div>

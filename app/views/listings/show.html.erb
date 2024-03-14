@@ -1,7 +1,17 @@
 <div class="container mt-5">
-  <%= link_to "<- Back", listings_path(@listings) %>
-  <div class="container mt-5">
-    <%= cl_image_tag @listing.photo.key, height: 300, width: 400, crop: :fill %>
-  </div>
+  <%= link_to "Back to Listings", listings_path(@listings), class: "btn btn-info" %>
   <h2><%= @listing.name %></h2>
+  <div class="container mt-5">
+    <% if  @listing.photo.attached? %>
+      <%= cl_image_tag @listing.photo.key, height: 200, width: 300, crop: :fill %>
+    <% end %>
+    <ul>
+      <li><%= "Location: #{@listing.location}" %></li>
+      <li><%= "Wifi: #{@listing.wifi.to_s}" %></li>
+      <li><%= "Workspace: #{@listing.workspace.to_s}" %></li>
+      <li><%= "Price: #{@listing.price}" %></li>
+      <li><%= "Host: #{@listing.user.first_name} #{@listing.user.last_name}" %></li>
+      <%= link_to "Book Now", new_booking_path(@listing.id), class: "btn btn-primary" %>
+    </ul>
+  </div>
 </div>
