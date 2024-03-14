@@ -1,10 +1,14 @@
 <div class="container">
-  <%= link_to "Back to Homepage", root_path, class: "btn btn-info" %>
   <h3><%= "Welcome #{current_user.first_name} #{current_user.last_name}," %></h3>
-  <h3>Manage Your Bookings</h3>
+  <% if current_user.bookings.length > 0 %>
+  <h4>Your Bookings</h4>
+  <% else %>
+    <h4>You don't have bookings yet.</h4>
+  <% end %>
   <br>
     <% @bookings.each do |booking| %>
       <% if (booking.user.first_name == @user.first_name) && (booking.user.last_name == @user.last_name) %>
+        <h2>Manage Your Bookings</h2>
         <strong><%= booking.listing.name %></strong>
           <ul>
             <li><%= "Start Date: #{booking.start_date}" %></li>
