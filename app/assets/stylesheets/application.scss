@@ -10,3 +10,35 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+// Styles for navigation
+.navbar {
+  background: #eaf0fa;
+  color: white;
+  padding: 1em;
+
+  .navigation-menu {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: inline;
+      margin-right: 20px;
+
+      a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
