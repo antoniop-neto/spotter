@@ -6,11 +6,12 @@
   background: rgb(255, 255, 255);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 16px;
+  justify-content: space-between;
 }
 
 .card-show > img {
   height: 100%;
-  width: 100%;
+  width: 70%;
   object-fit:cover;
 }
 
@@ -27,6 +28,9 @@
 }
 
 .container-infos {
+  width: 30%;
+  flex-direction: column;
+  display: flex;
   justify-content: space-between;
 }
 
@@ -41,6 +45,7 @@
 .card-show-infos ul{
   list-style-type: none;
   margin-left: 0;
+  padding-left: 0;
 }
 
 
@@ -48,5 +53,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding-right: 8px;
+  padding-right: 0px;
+  margin-left: 8px;
+  margin-right: 0px;
 }

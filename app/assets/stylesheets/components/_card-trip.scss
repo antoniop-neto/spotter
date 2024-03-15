@@ -1,11 +1,10 @@
-.card-trip {
-  width: 22%;
+.container-cards .card-trip {
+  width: 100%;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 8px;
-  margin: 8px;
-  justify-content: space-between;
+  // margin: 8px;
 }
 .card-trip > img {
   height: 200px;
@@ -26,10 +25,12 @@
   padding: 8px;
   align-items: flex-start;
 }
-.container-card {
-  display: flex;
-  width: 100%;
-  justify-content:center;
+.container-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 8px;
+  padding-left: 64px;
+  padding-right: 64px;
 }
 
 .button-container {

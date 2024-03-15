@@ -15,7 +15,7 @@
   </div>
 
 
-    <div class="container-card">
+    <div class="container-cards">
       <% @listings.each do |listing| %>
         <%#= link_to listing_path(listing), class:"card-trip-link" do %>
           <div class="card-trip">
@@ -33,7 +33,6 @@
               <h2 class="card-trip-pricing"><%= "€#{listing.price.round} week" %></h2>
             </div>
           </div>
-          <br>
         <% end %>
       <%# end %>
     </div>
