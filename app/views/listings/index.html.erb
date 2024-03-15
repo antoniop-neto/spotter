@@ -1,12 +1,6 @@
 <div class="main-container">
-  <%= link_to "Back", root_path, class: "btn btn-info" %>
   <br>
-  <h1>Our Workation Destinations</h1>
-  <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+  <h1 class="row justify-content-center">Our Workation Destinations</h1>
   <br>
 
   <%# Search Form %>
@@ -42,9 +36,9 @@
       <br>
     <% end %>
   </div>
+  <br>
 
-  <div class="map-container">
-    <h1>Available Workation Listings</h1>
+  <div class="map-container my-4">
     <div style="width: 90%; height: 400px;"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
