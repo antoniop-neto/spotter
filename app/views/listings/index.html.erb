@@ -28,8 +28,11 @@
             <div>
               <h2><%= listing.name %></h2>
               <p><%= listing.location %></p>
-              <%= link_to "Learn More", listing_path(listing), class: "btn btn-primary" %>
             </div>
+
+          </div>
+          <div class="button-container">
+            <%= link_to "Learn More", listing_path(listing), class: "btn btn-primary" %>
             <h2 class="card-trip-pricing"><%= listing.price %></h2>
           </div>
         </div>
