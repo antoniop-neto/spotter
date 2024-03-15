@@ -1,11 +1,12 @@
 <div class="container">
   <h3><%= "Welcome #{current_user.first_name} #{current_user.last_name}," %></h3>
   <h3>Your Listings:</h3>
-  <br>
+  <div class="container mb-5">
+    <%= link_to "Create New", new_listing_path, class: "btn btn-success"%>
+  </div>
 
-  <%= link_to "Create New", new_listing_path, class: "btn btn-success"%>
-  <div class="container-card">
-    <br>
+
+  <div class="container-cards">
       <% @listings.each do |listing| %>
       <div class="card-trip">
         <% if listing.photo.attached? %>
@@ -21,7 +22,6 @@
             <h2><%= link_to "Remove", delete_listing_path(listing), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-danger"%></h2>
           </ul>
       </div>
-      <br>
       <% end %>
   </div>
 </div>
