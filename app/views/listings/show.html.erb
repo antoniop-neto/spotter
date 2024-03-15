@@ -1,15 +1,16 @@
 <div class="container mt-5">
   <h2><%= @listing.name %></h2>
-  <div class="container mt-5 card-trip">
+  <div class="container-card mt-5">
     <div style="width: 400px; height: 300px;"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-    <div class="card-trip-infos">
+    <div class="card-trip">
       <% if  @listing.photo.attached? %>
         <%= cl_image_tag @listing.photo.key, height: 200, width: 300, crop: :fill %>
       <% end %>
+      <div class="card-trip-infos">
       <ul>
         <li><%= "Average Rating: #{@listing.average_rating}" %></li>
         <li><%= "Location: #{@listing.location}" %></li>
@@ -19,6 +20,7 @@
         <li><%= "Host: #{@listing.user.first_name} #{@listing.user.last_name}" %></li>
         <%= link_to "Book Now", new_booking_path(@listing.id), class: "btn btn-primary" %>
       </ul>
+      </div>
     </div>
   </div>
 

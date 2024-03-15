@@ -1,3 +1,6 @@
+Booking.destroy_all
+Listing.destroy_all
+User.destroy_all
 puts 'Adding users'
 # Create Users
 peter = User.create!(email: 'peter@gmail.com', password: 'password123', password_confirmation: 'password123', first_name: 'Peter', last_name: 'Doe')
