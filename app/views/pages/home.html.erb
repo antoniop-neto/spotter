@@ -13,24 +13,30 @@
     <h2 class="text-left mb-4">Explore Our Locations</h2>
     <p>NomadNest curates exceptional workation spots around the globe, tailored for digital nomads seeking the perfect blend of productivity and relaxation. Dive into our handpicked locations, where every detail is crafted to inspire your work and enrich your travels. Explore, connect, and thrive in our vibrant communities, designed to fuel creativity and foster connections.</p>
   </div>
-  <div class="container-card">
-  <% @listings.each do |listing| %>
-      <div class="card-trip">
-        <% if listing.photo.attached? %>
-          <%= cl_image_tag listing.photo.key, height: 150, width: 200, crop: :fill %>
-        <% end %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= listing.name %></h2>
-            <p><%= listing.location %></p>
-            <%= link_to "Learn More", listing_path(listing), class: "btn btn-primary" %>
+
+
+    <div class="container-card">
+      <% @listings.each do |listing| %>
+        <%#= link_to listing_path(listing), class:"card-trip-link" do %>
+          <div class="card-trip">
+            <% if listing.photo.attached? %>
+              <%= cl_image_tag listing.photo.key, height: 150, width: 200, crop: :fill %>
+            <% end %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= listing.name %></h2>
+                <p><%= listing.location %></p>
+              </div>
+            </div>
+            <div class="button-container">
+              <%= link_to "Learn More", listing_path(listing), class: "btn btn-primary" %>
+              <h2 class="card-trip-pricing"><%= "€#{listing.price.round} week" %></h2>
+            </div>
           </div>
-          <h2 class="card-trip-pricing"><%= listing.price %></h2>
-        </div>
-      </div>
-    <br>
-  <% end %>
-</div>
+          <br>
+        <% end %>
+      <%# end %>
+    </div>
 
 <br>
 <div class="listing-property">
