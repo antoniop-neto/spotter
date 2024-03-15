@@ -5,6 +5,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 8px;
   margin: 8px;
+  justify-content: space-between;
 }
 .card-trip > img {
   height: 200px;
@@ -22,15 +23,17 @@
   margin: 0;
 }
 .card-trip .card-trip-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+  padding: 8px;
+  align-items: flex-start;
 }
 .container-card {
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
   justify-content:center;
+}
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-right: 8px;
 }
