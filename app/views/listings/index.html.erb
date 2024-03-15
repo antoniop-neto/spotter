@@ -1,7 +1,7 @@
 <div class="container">
-  <%= link_to "Back to Homepage", root_path, class: "btn btn-info" %>
+  <%= link_to "Back", root_path, class: "btn btn-info" %>
   <br>
-  <h1>Available Workation Listings</h1>
+  <h1>Our Workation Destinations</h1>
   <div style="width: 100%; height: 600px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
