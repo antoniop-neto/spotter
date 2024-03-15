@@ -7,18 +7,19 @@
   <% end %>
   <br>
 
-  <div class="container-card">
+  <div class="card-product-container">
     <% current_user.bookings.each do |booking| %>
-    <div class="card-trip">
+    <div class="card-product">
 
         <strong><%= booking.listing.name %></strong>
-        <div class="card-trip-infos">
+
+        <div class="card-product-infos">
           <ul>
-            <li><%= "Start Date: #{booking.start_date}" %></li>
-            <li><%= "End Date: #{booking.end_date}" %></li>
-            <li><%= "Host: #{booking.listing.user.first_name} #{booking.listing.user.last_name} " %></li>
-            <li><%= link_to "Remove", delete_booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %></li>
-            <li><%= link_to "Review", new_review_path(booking.listing), class: "btn btn-info" %></li>
+
+            <p><%= "Start Date: #{booking.start_date}" %></p>
+            <p><%= "End Date: #{booking.end_date}" %></p>
+            <p><%= "Host: #{booking.listing.user.first_name} #{booking.listing.user.last_name} " %></p>
+            <h2><%= link_to "Remove", delete_booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>  <%= link_to "Review", new_review_path(booking.listing), class: "btn btn-info" %></h2>
           </ul>
         </div>
 
