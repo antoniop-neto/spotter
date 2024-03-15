@@ -2,23 +2,23 @@
   <h3><%= "Welcome #{current_user.first_name} #{current_user.last_name}," %></h3>
   <h3>Your Listings:</h3>
   <br>
-  
+
   <%= link_to "Create New", new_listing_path, class: "btn btn-success"%>
   <div class="container-card">
     <br>
       <% @listings.each do |listing| %>
       <div class="card-trip">
-        <strong><%= listing.name %></strong>
         <% if listing.photo.attached? %>
           <%= cl_image_tag listing.photo.key, height: 150, width: 200, crop: :fill %>
         <% end %>
+        <h2><%= listing.name %></h2>
           <ul>
-            <li><%= "Location: #{listing.location}" %></li>
-            <li><%= "Wifi: #{listing.wifi}" %></li>
-            <li><%= "Workspace: #{listing.workspace}" %></li>
-            <li><%= "Price: #{listing.price}" %></li>
-            <li><%= "Host: #{listing.user.first_name} #{listing.user.last_name}" %></li>
-            <li><%= link_to "Remove", delete_listing_path(listing), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-danger"%></li>
+            <p><%= "Location: #{listing.location}" %></p>
+            <p><%= "Wifi: #{listing.wifi}" %></p>
+            <p><%= "Workspace: #{listing.workspace}" %></p>
+            <p><%= "Price: #{listing.price}" %></p>
+            <p><%= "Host: #{listing.user.first_name} #{listing.user.last_name}" %></p>
+            <h2><%= link_to "Remove", delete_listing_path(listing), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-danger"%></h2>
           </ul>
       </div>
       <br>
